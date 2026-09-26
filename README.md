@@ -1,71 +1,50 @@
-#SkillSwap – Skill Exchange Web Application
+# SkillSwap – Skill Exchange Web Application
 
 SkillSwap is a web-based skill exchange platform that connects people who want to learn with people who are willing to teach. Users can create accounts, manage their profiles, add skills, discover suitable skill partners, and send connection requests.
 
-Features
+## Features
 
-User registration
+- User registration
+- User login and authentication
+- Session-based user identification
+- Profile management
+- Add and manage skills
+- Find suitable skill matches
+- Send connection requests
+- View connections
+- Accept or reject connection requests
+- Dynamic homepage statistics
+  - Skills
+  - Registered Learners
+  - Successful Skill Swaps
 
-User login and authentication
+## Technology Stack
 
-Session-based user identification
+### Frontend
+- HTML5
+- CSS3
+- JavaScript
 
-Profile management
+### Backend
+- Java
+- Java Servlets
+- JDBC
 
-Add and manage skills
+### Database
+- MySQL
+- Relational database design
 
-Find suitable skill matches
+### Server
+- Apache Tomcat 10.1
 
-Send connection requests
+### Development Tools
+- Visual Studio Code
+- Git
+- GitHub
 
-View connections
+## Application Flow
 
-Accept or reject connection requests
-
-Dynamic homepage statistics
-
-Skills
-
-Registered Learners
-
-Successful Skill Swaps
-
-Technology Stack
-
-Frontend
-
-HTML5
-
-CSS3
-
-JavaScript
-
-Backend
-
-Java
-
-Java Servlets
-
-JDBC
-
-Database
-
-MySQL
-
-Server
-
-Apache Tomcat 10.1
-
-Development Tools
-
-Visual Studio Code
-
-Git
-
-GitHub
-
-Application Flow
-
+```text
 User
   ↓
 HTML / CSS / JavaScript
@@ -79,35 +58,31 @@ MySQL
 Response
   ↓
 Frontend
+```
 
-Main Modules
+## Main Modules
 
-Registration
-
+### Registration
 Users submit their name, email, and password through the registration form. The registration servlet processes the request and stores the user information in MySQL.
 
-Login
-
+### Login
 Users log in using their registered credentials. On successful authentication, the application creates a session so the logged-in user can be identified across requests.
 
-Profile
-
+### Profile
 Users can view and manage their profile information.
 
-Skills
-
+### Skills
 Users can add skills and use the application to discover people based on skills they want to learn or share.
 
-Matching
-
+### Matching
 The matching feature helps users discover suitable skill partners.
 
-Connections
+### Connections
+A user can send a connection request to another user. New requests are initially stored with a `pending` status.
 
-A user can send a connection request to another user. New requests are initially stored with a pending status.
+When the receiver accepts the request, the status changes to `connected`.
 
-When the receiver accepts the request, the status changes to connected.
-
+```text
 Connect
    ↓
 pending
@@ -115,62 +90,70 @@ pending
 Accept
    ↓
 connected
+```
 
-Database
+## Database
 
-The application uses a MySQL database named skillswap.
+The application uses a MySQL database named `skillswap`.
 
 Main tables:
 
+```text
 users
 skills
 connections
+```
 
-Users
-
+### Users
 Stores registered user information.
 
-Skills
-
+### Skills
 Stores skill-related information used by the application.
 
-Connections
-
+### Connections
 Stores relationships between users.
 
 Important fields include:
 
+```text
 id
 sender_id
 receiver_id
 status
+```
 
-The status field is used to represent the state of a connection request, such as:
+The `status` field is used to represent the state of a connection request, such as:
 
+```text
 pending
 connected
+```
 
-Dynamic Homepage Statistics
+## Dynamic Homepage Statistics
 
 The homepage statistics are retrieved from the database instead of being permanently hardcoded.
 
-Learners
+### Learners
 
-The number of registered learners is calculated from the users table.
+The number of registered learners is calculated from the `users` table.
 
+```sql
 SELECT COUNT(*) FROM users;
+```
 
-Skill Swaps
+### Skill Swaps
 
 Successful skill swaps are counted from connected relationships.
 
+```sql
 SELECT COUNT(*)
 FROM connections
 WHERE status = 'connected';
+```
 
 The frontend requests the statistics through JavaScript, the existing servlet retrieves the values from MySQL, and JavaScript updates the corresponding HTML elements.
 
-Servlet Endpoints
+## Servlet Endpoints
 
 The application uses Java Servlets mapped to URL patterns such as:
 
@@ -179,19 +162,18 @@ The application uses Java Servlets mapped to URL patterns such as:
 /connection-requests
 /accept-request
 
+
 Examples:
 
-/connect → creates a connection request
+- `/connect` → creates a connection request
+- `/connections` → loads user connections and can provide homepage statistics
+- `/connection-requests` → loads pending requests
+- `/accept-request` → accepts a pending connection
 
-/connections → loads user connections and can provide homepage statistics
-
-/connection-requests → loads pending requests
-
-/accept-request → accepts a pending connection
-
-JDBC Flow
+## JDBC Flow
 
 The backend communicates with MySQL using JDBC.
+
 
 MySQL Driver
      ↓
@@ -203,11 +185,13 @@ SQL Query
      ↓
 ResultSet / Update
 
-PreparedStatement is used for parameterized SQL queries.
 
-Project Structure
+`PreparedStatement` is used for parameterized SQL queries.
+
+## Project Structure
 
 A simplified structure is:
+
 
 SkillSwap
 ├── src
@@ -236,49 +220,38 @@ SkillSwap
 │
 └── .gitignore
 
-Requirements
+
+## Requirements
 
 Before running the project, install/configure:
 
-Java 17
+- Java 17
+- Apache Tomcat 10.1
+- MySQL
+- MySQL Connector/J
+- A Java-compatible development environment such as VS Code
 
-Apache Tomcat 10.1
-
-MySQL
-
-MySQL Connector/J
-
-A Java-compatible development environment such as VS Code
-
-Database Configuration
+## Database Configuration
 
 Create the MySQL database:
 
 CREATE DATABASE skillswap;
 
-Create/configure the required tables (users, skills, and connections) according to the project schema.
+Create/configure the required tables (`users`, `skills`, and `connections`) according to the project schema.
 
-Do not commit real database passwords or other secrets to GitHub. Keep credentials in a secure local configuration or environment variable.
+## Running the Project
 
-Running the Project
-
-Start MySQL.
-
-Make sure the skillswap database is available.
-
-Configure the MySQL Connector/J driver for the application.
-
-Compile the Java servlet classes.
-
-Deploy the web application to Apache Tomcat.
-
-Start Tomcat.
-
-Open:
-
+1. Start MySQL.
+2. Make sure the `skillswap` database is available.
+3. Configure the MySQL Connector/J driver for the application.
+4. Compile the Java servlet classes.
+5. Deploy the web application to Apache Tomcat.
+6. Start Tomcat.
+7. Open:
 http://localhost:8080/webapp/index.html
 
-GitHub
+
+## GitHub
 
 The project can be maintained using Git and GitHub for version control.
 
@@ -291,21 +264,18 @@ git branch -M main
 git remote add origin <YOUR_GITHUB_REPOSITORY_URL>
 git push -u origin main
 
-Future Enhancements
 
-Password hashing and stronger authentication
+## Future Enhancements
 
-Secure environment-based database configuration
+- Password hashing and stronger authentication
+- Secure environment-based database configuration
+- Better skill recommendation and matching
+- Search and filtering
+- User profile images
+- Notifications
+- Improved validation and error handling
+- Responsive UI improvements
 
-Better skill recommendation and matching
 
-Search and filtering
 
-User profile images
-
-Notifications
-
-Improved validation and error handling
-
-Responsive UI improvements
 
