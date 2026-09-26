@@ -1,3 +1,4 @@
+
 # SkillSwap – Skill Exchange Web Application
 
 SkillSwap is a web-based skill exchange platform that connects people who want to learn with people who are willing to teach. Users can create accounts, manage their profiles, add skills, discover suitable skill partners, and send connection requests.
@@ -157,11 +158,12 @@ The frontend requests the statistics through JavaScript, the existing servlet re
 
 The application uses Java Servlets mapped to URL patterns such as:
 
+```text
 /connect
 /connections
 /connection-requests
 /accept-request
-
+```
 
 Examples:
 
@@ -174,7 +176,7 @@ Examples:
 
 The backend communicates with MySQL using JDBC.
 
-
+```text
 MySQL Driver
      ↓
 Connection
@@ -184,7 +186,7 @@ PreparedStatement
 SQL Query
      ↓
 ResultSet / Update
-
+```
 
 `PreparedStatement` is used for parameterized SQL queries.
 
@@ -192,7 +194,7 @@ ResultSet / Update
 
 A simplified structure is:
 
-
+```text
 SkillSwap
 ├── src
 │   └── main
@@ -219,7 +221,7 @@ SkillSwap
 │           └── WEB-INF
 │
 └── .gitignore
-
+```
 
 ## Requirements
 
@@ -235,7 +237,9 @@ Before running the project, install/configure:
 
 Create the MySQL database:
 
+```sql
 CREATE DATABASE skillswap;
+```
 
 Create/configure the required tables (`users`, `skills`, and `connections`) according to the project schema.
 
@@ -248,22 +252,10 @@ Create/configure the required tables (`users`, `skills`, and `connections`) acco
 5. Deploy the web application to Apache Tomcat.
 6. Start Tomcat.
 7. Open:
+
+```text
 http://localhost:8080/webapp/index.html
-
-
-## GitHub
-
-The project can be maintained using Git and GitHub for version control.
-
-Typical commands:
-
-git init
-git add .
-git commit -m "Complete SkillSwap web application"
-git branch -M main
-git remote add origin <YOUR_GITHUB_REPOSITORY_URL>
-git push -u origin main
-
+```
 
 ## Future Enhancements
 
