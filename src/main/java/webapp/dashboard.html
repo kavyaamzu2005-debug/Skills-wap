@@ -1,0 +1,1216 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SkillSwap | Dashboard</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+
+</head>
+
+
+<style>
+
+   
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f6f7fc;
+    color: #20233a;
+}
+
+
+
+.navbar {
+    height: 76px;
+    padding: 0 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+    border-bottom: 1px solid #ececf5;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: 800;
+    color: #24233f;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: #7161ef;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #686b82;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #7161ef;
+}
+
+
+
+.dashboard {
+    width: 86%;
+    max-width: 1450px;
+    margin: 0 auto;
+    padding: 42px 0 70px;
+}
+
+
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 35px;
+}
+
+.welcome {
+    color: #8278dc;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+}
+
+.dashboard-header h1 {
+    margin: 0;
+    font-size: clamp(28px, 4vw, 45px);
+    line-height: 1.2;
+    color: #24243c;
+    letter-spacing: -1.3px;
+}
+
+.dashboard-subtitle {
+    margin-top: 14px;
+    color: #85879b;
+    font-size: 15px;
+}
+
+.profile-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #7161ef;
+    color: white;
+    text-decoration: none;
+    padding: 13px 22px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: 0.3s;
+    box-shadow: 0 7px 18px rgba(113, 97, 239, 0.22);
+}
+
+.profile-btn:hover {
+    background: #5948d9;
+    transform: translateY(-2px);
+}
+
+
+
+.preference-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+    margin-bottom: 42px;
+}
+
+.preference-card {
+    padding: 30px;
+    border-radius: 22px;
+    border: 1px solid transparent;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.preference-card:hover {
+    transform: translateY(-4px);
+}
+
+.teach-card {
+    background: linear-gradient(135deg, #eeeaff, #f8f6ff);
+    border-color: #e1dcff;
+}
+
+.learn-card {
+    background: linear-gradient(135deg, #e8f7ff, #f5fbff);
+    border-color: #d6effb;
+}
+
+.preference-icon {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.85);
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.preference-card h2 {
+    margin: 0 0 10px;
+    color: #292943;
+    font-size: 22px;
+}
+
+.preference-card p {
+    color: #777991;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 22px;
+}
+
+.preference-card select {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid #dedeee;
+    border-radius: 11px;
+    background: white;
+    color: #505269;
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+}
+
+.preference-card select:focus {
+    border-color: #7161ef;
+    box-shadow: 0 0 0 3px rgba(113, 97, 239, 0.12);
+}
+
+.dashboard-btn {
+    margin-top: 15px;
+    border: none;
+    border-radius: 11px;
+    padding: 12px 20px;
+    background: #7161ef;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dashboard-btn:hover {
+    background: #5948d9;
+    transform: translateY(-2px);
+}
+
+
+
+.matches,
+.all-matches {
+    margin-top: 38px;
+    margin-bottom: 42px;
+}
+
+.all-matches {
+    display: none;
+}
+
+.section-heading {
+    margin-bottom: 20px;
+}
+
+.section-heading h2 {
+    margin: 0 0 8px;
+    color: #292943;
+    font-size: 24px;
+    letter-spacing: -0.4px;
+}
+
+.section-heading p {
+    margin: 0;
+    color: #85879b;
+    font-size: 14px;
+}
+
+
+
+.match-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+    gap: 22px;
+    margin-top: 22px;
+}
+
+.match-card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 20px;
+    border: 1px solid #ececf5;
+    box-shadow: 0 7px 25px rgba(38, 35, 76, 0.045);
+    transition: 0.3s ease;
+}
+
+.match-card:hover {
+    transform: translateY(-5px);
+    border-color: #dcd6ff;
+    box-shadow: 0 14px 35px rgba(38, 35, 76, 0.09);
+}
+
+.profile-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eeeaff;
+    color: #7161ef;
+    font-size: 28px;
+    margin-bottom: 18px;
+}
+
+.match-card h3 {
+    margin: 0 0 12px;
+    color: #292943;
+    font-size: 20px;
+}
+
+.match-card p {
+    color: #777991;
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 8px 0;
+}
+
+.match-card strong {
+    color: #45465f;
+}
+
+.match-card button {
+    width: 100%;
+    margin-top: 17px;
+    padding: 11px 15px;
+    border: none;
+    border-radius: 10px;
+    background: #7161ef;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.match-card button:hover {
+    background: #5948d9;
+}
+
+.match-card button:disabled {
+    opacity: 0.85;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.loading-text {
+    color: #888ba0;
+    font-size: 14px;
+}
+
+
+
+.connection-section {
+    margin: 35px 0;
+    padding: 28px;
+    border-radius: 22px;
+    background: #ffffff;
+    border: 1px solid #ececf5;
+    box-shadow: 0 7px 25px rgba(38, 35, 76, 0.045);
+}
+
+.connection-section .section-heading {
+    margin-bottom: 22px;
+}
+
+.connection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.connection-card {
+    padding: 21px;
+    border-radius: 16px;
+    background: #f8f8ff;
+    border: 1px solid #e7e5f7;
+    transition: 0.3s;
+}
+
+.connection-card:hover {
+    background: #f1efff;
+    transform: translateY(-3px);
+}
+
+.connection-card h3 {
+    color: #30304a;
+    margin: 0 0 10px;
+    font-size: 17px;
+}
+
+.connection-card p {
+    color: #777991;
+    margin: 8px 0;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+
+.find-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 28px 30px;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #292943, #494477);
+    color: white;
+    margin-top: 35px;
+}
+
+.find-section h2 {
+    margin: 0 0 8px;
+    font-size: 23px;
+}
+
+.find-section p {
+    margin: 0;
+    color: #d6d5eb;
+    font-size: 14px;
+}
+
+.find-section .dashboard-btn {
+    background: white;
+    color: #5b4bd7;
+    margin-top: 0;
+    white-space: nowrap;
+}
+
+.find-section .dashboard-btn:hover {
+    background: #eeeaff;
+}
+
+
+
+@media (max-width: 850px) {
+
+    .navbar {
+        padding: 0 5%;
+    }
+
+    .nav-links {
+        gap: 14px;
+    }
+
+    .dashboard {
+        width: 90%;
+        padding-top: 30px;
+    }
+
+    .dashboard-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .preference-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .find-section {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .find-section .dashboard-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 520px) {
+
+    .navbar {
+        height: auto;
+        padding: 20px;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        width: 100%;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .dashboard {
+        width: 92%;
+        padding: 28px 0 45px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 30px;
+    }
+
+    .preference-card,
+    .connection-section {
+        padding: 22px;
+    }
+
+    .section-heading h2 {
+        font-size: 21px;
+    }
+
+    .match-grid,
+    .connection-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .find-section {
+        padding: 25px;
+    }
+}
+</style>
+
+
+<body>
+
+
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Skill<span>Swap</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="login.html">Logout</a>
+        </div>
+
+    </nav>
+
+
+   
+
+    <main class="dashboard">
+
+        <div class="dashboard-header">
+
+            <div>
+
+                <p class="welcome">
+                    WELCOME BACK &#128075;
+                </p>
+
+                <h1>
+                    Find Your Skill Match
+                </h1>
+
+                <p class="dashboard-subtitle">
+                    Tell us what you can teach and what you want to learn.
+                </p>
+
+            </div>
+
+            <a href="profile" class="profile-btn">
+                My Profile
+            </a>
+
+        </div>
+
+
+       
+
+        <section class="preference-grid">
+
+
+
+            <div class="preference-card teach-card">
+
+                <div class="preference-icon">
+                    &#127891;
+                </div>
+
+                <h2>
+                    I Can Teach
+                </h2>
+
+                <p>
+                    Skills that you are confident enough to teach others.
+                </p>
+
+                <form action="skill" method="post">
+
+                    <select name="skill" required>
+
+                        <option value="">
+                            Select a skill
+                        </option>
+
+                        <option value="Java">
+                            Java
+                        </option>
+
+                        <option value="Python">
+                            Python
+                        </option>
+
+                        <option value="HTML & CSS">
+                            HTML & CSS
+                        </option>
+
+                        <option value="JavaScript">
+                            JavaScript
+                        </option>
+
+                        <option value="React">
+                            React
+                        </option>
+
+                        <option value="SQL">
+                            SQL
+                        </option>
+
+                        <option value="Git & GitHub">
+                            Git & GitHub
+                        </option>
+
+                        <option value="Manual Testing">
+                            Manual Testing
+                        </option>
+
+                        <option value="Selenium">
+                            Selenium
+                        </option>
+
+                    </select>
+
+                    <input
+                        type="hidden"
+                        name="type"
+                        value="teach"
+                    >
+
+                    <button
+                        type="submit"
+                        class="dashboard-btn"
+                    >
+                        Add Skill +
+                    </button>
+
+                </form>
+
+            </div>
+
+
+           
+
+            <div class="preference-card learn-card">
+
+                <div class="preference-icon">
+                    &#128218;
+                </div>
+
+                <h2>
+                    I Want to Learn
+                </h2>
+
+                <p>
+                    Skills that you want to learn from another person.
+                </p>
+
+                <form action="skill" method="post">
+
+                    <select name="skill" required>
+
+                        <option value="">
+                            Select a skill
+                        </option>
+
+                        <option value="Java">
+                            Java
+                        </option>
+
+                        <option value="Python">
+                            Python
+                        </option>
+
+                        <option value="HTML & CSS">
+                            HTML & CSS
+                        </option>
+
+                        <option value="JavaScript">
+                            JavaScript
+                        </option>
+
+                        <option value="React">
+                            React
+                        </option>
+
+                        <option value="SQL">
+                            SQL
+                        </option>
+
+                        <option value="Data Structures">
+                            Data Structures
+                        </option>
+
+                        <option value="Manual Testing">
+                            Manual Testing
+                        </option>
+
+                        <option value="Selenium">
+                            Selenium
+                        </option>
+
+                    </select>
+
+                    <input
+                        type="hidden"
+                        name="type"
+                        value="learn"
+                    >
+
+                    <button
+                        type="submit"
+                        class="dashboard-btn"
+                    >
+                        Add Skill +
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- Recommended Matches -->
+
+        <section class="matches">
+
+            <div class="section-heading">
+
+                <h2>
+                    &#11088; Recommended Matches
+                </h2>
+
+                <p>
+                    People who are relevant to your skills.
+                </p>
+
+            </div>
+
+
+            <div
+                class="match-grid"
+                id="recommendedGrid"
+            >
+
+                <p class="loading-text">
+                    Loading recommended matches...
+                </p>
+
+            </div>
+
+        </section>
+
+
+       
+
+        <section class="connection-section">
+
+            <div class="section-heading">
+
+                <h2>
+                    &#129309; My Connections
+                </h2>
+
+                <p>
+                    Your pending and connected users.
+                </p>
+
+            </div>
+
+            <div
+                class="connection-grid"
+                id="connectionsGrid"
+            >
+
+                <p class="loading-text">
+                    Loading connections...
+                </p>
+
+            </div>
+
+        </section>
+           
+
+<section class="connection-section">
+    <div class="section-heading">
+        <h2>📩 Connection Requests</h2>
+        <p>People who want to connect with you.</p>
+    </div>
+
+    <div class="connection-grid" id="connectionRequestsGrid">
+        <p class="loading-text">Loading connection requests...</p>
+    </div>
+</section>
+
+
+     
+
+        <section class="find-section">
+
+            <div>
+
+                <h2>
+                    &#128269; Find Your Match
+                </h2>
+
+                <p>
+                    View all available SkillSwap users.
+                </p>
+
+            </div>
+
+            <button
+                type="button"
+                class="dashboard-btn"
+                onclick="findAllMatches()"
+            >
+                Find Matches →
+            </button>
+
+        </section>
+
+
+
+      
+
+        <section
+            class="all-matches"
+            id="allMatchesSection"
+        >
+
+            <div class="section-heading">
+
+                <h2>
+                    &#128101; All Available Users
+                </h2>
+
+                <p>
+                    All registered users except you.
+                </p>
+
+            </div>
+
+
+            <div
+                class="match-grid"
+                id="allMatchesGrid"
+            >
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+  
+
+    <script>
+
+
+
+        function loadRecommendedMatches() {
+
+            const recommendedGrid =
+                document.getElementById("recommendedGrid");
+
+            fetch("./recommended")
+
+                .then(function(response) {
+
+                    if (!response.ok) {
+                        throw new Error(
+                            "Recommended users not found"
+                        );
+                    }
+
+                    return response.text();
+
+                })
+
+                .then(function(data) {
+
+                    recommendedGrid.innerHTML = data;
+
+                })
+
+                .catch(function(error) {
+
+                    recommendedGrid.innerHTML =
+                        "<p class='loading-text'>" +
+                        "Unable to load recommended matches." +
+                        "</p>";
+
+                    console.error(error);
+
+                });
+
+        }
+
+
+       
+
+        function findAllMatches() {
+
+            const allMatchesSection =
+                document.getElementById(
+                    "allMatchesSection"
+                );
+
+            const allMatchesGrid =
+                document.getElementById(
+                    "allMatchesGrid"
+                );
+
+            allMatchesSection.style.display =
+                "block";
+
+            allMatchesGrid.innerHTML =
+                "<p class='loading-text'>" +
+                "Loading all users..." +
+                "</p>";
+
+            fetch("./match")
+
+                .then(function(response) {
+
+                    if (!response.ok) {
+                        throw new Error(
+                            "All users not found"
+                        );
+                    }
+
+                    return response.text();
+
+                })
+
+                .then(function(data) {
+
+                    allMatchesGrid.innerHTML = data;
+
+                    allMatchesSection.scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+                })
+
+                .catch(function(error) {
+
+                    allMatchesGrid.innerHTML =
+                        "<p class='loading-text'>" +
+                        "Unable to load all users." +
+                        "</p>";
+
+                    console.error(error);
+
+                });
+
+        }
+
+
+        function loadConnections() {
+
+            const connectionsGrid =
+                document.getElementById(
+                    "connectionsGrid"
+                );
+
+            fetch("./connections")
+
+                .then(function(response) {
+
+                    if (!response.ok) {
+                        throw new Error(
+                            "Connections not found"
+                        );
+                    }
+
+                    return response.text();
+
+                })
+
+                .then(function(data) {
+
+                    connectionsGrid.innerHTML = data;
+
+                })
+
+                .catch(function(error) {
+
+                    connectionsGrid.innerHTML =
+                        "<p class='loading-text'>" +
+                        "Unable to load connections." +
+                        "</p>";
+
+                    console.error(error);
+
+                });
+
+        }
+
+
+       
+
+        document.addEventListener(
+            "submit",
+            function(event) {
+
+                const form = event.target;
+
+                if (!form.action.endsWith("/connect")) {
+                    return;
+                }
+
+                event.preventDefault();
+
+                const button =
+                    form.querySelector("button");
+
+                const formData =
+                    new FormData(form);
+
+                button.disabled = true;
+                button.innerText = "Sending...";
+
+                fetch(form.action, {
+
+                    method: "POST",
+
+                    body: new URLSearchParams(formData)
+
+                })
+
+                    .then(function(response) {
+
+                        return response.text();
+
+                    })
+
+                    .then(function(result) {
+
+                        const cleanResult =
+                            result.trim();
+
+
+                        if (cleanResult === "REQUEST_SENT") {
+
+                            const card =
+                                form.closest(".match-card");
+
+                            if (card) {
+                                card.remove();
+                            }
+
+                            alert(
+                                "Connection request sent successfully!"
+                            );
+
+                            loadConnections();
+
+                        }
+
+
+                        else if (
+                            cleanResult === "ALREADY_EXISTS"
+                        ) {
+
+                            const card =
+                                form.closest(".match-card");
+
+                            if (card) {
+                                card.remove();
+                            }
+
+                            alert(
+                                "This user is already in your connections."
+                            );
+
+                            loadConnections();
+
+                        }
+
+
+                        else {
+
+                            button.disabled = false;
+
+                            button.innerText =
+                                "Connect";
+
+                            alert(
+                                "Unable to send connection request."
+                            );
+
+                        }
+
+                    })
+
+                    .catch(function(error) {
+
+                        console.error(error);
+
+                        button.disabled = false;
+
+                        button.innerText =
+                            "Connect";
+
+                        alert(
+                            "Unable to send connection request."
+                        );
+
+                    });
+
+            }
+        );
+
+
+       window.onload = function() {
+    loadRecommendedMatches();
+    loadConnectionRequests();
+    loadConnections();
+};
+
+
+        
+function loadConnectionRequests() {
+
+    fetch("./connection-requests")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("connectionRequestsGrid").innerHTML = data;
+        })
+        .catch(error => {
+            document.getElementById("connectionRequestsGrid").innerHTML =
+                "<p>Unable to load connection requests.</p>";
+
+            console.error(error);
+        });
+}
+
+
+// ACCEPT REQUEST
+function acceptRequest(connectionId) {
+
+    fetch("./accept-request", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: "connection_id=" + encodeURIComponent(connectionId)
+    })
+    .then(response => response.text())
+    .then(result => {
+
+        if (result.trim() === "ACCEPTED") {
+
+            alert("Connection request accepted!");
+
+            loadConnectionRequests();
+            loadConnections();
+
+        } else {
+
+            alert("Unable to accept request: " + result);
+
+        }
+    })
+    .catch(error => {
+        alert("Server error while accepting request.");
+        console.error(error);
+    });
+}
+
+
+// REJECT REQUEST
+function rejectRequest(connectionId) {
+
+    fetch("./reject-request", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: "connection_id=" + encodeURIComponent(connectionId)
+    })
+    .then(response => response.text())
+    .then(result => {
+
+        if (result.trim() === "REJECTED") {
+
+            alert("Connection request rejected!");
+
+            loadConnectionRequests();
+            loadConnections();
+
+        } else {
+
+            alert("Unable to reject request: " + result);
+
+        }
+    })
+    .catch(error => {
+        alert("Server error while rejecting request.");
+        console.error(error);
+    });
+}
+
+
+    </script>
+
+
+</body>
+
+</html>

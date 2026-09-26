@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSwap | Learn & Share</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<script>
+    fetch("connections?stats=true")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Failed to load statistics");
+            }
+            return response.json();
+        })
+        .then(data => {
+            document.getElementById("learnersCount").textContent =
+                data.learners;
+
+            document.getElementById("swapsCount").textContent =
+                data.swaps;
+        })
+        .catch(error => {
+            console.error("Stats loading error:", error);
+        });
+</script>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            Skill<span>Swap</span>
+        </div>
+
+       <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#how">How It Works</a>
+    <a href="#skills">Skills</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="login.html" class="login-btn">Login</a>
+    <a href="register.html" class="signup-btn">Join Now</a>
+</div>
+    </nav>
+
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                ✨ Learn something. Teach something.
+            </div>
+
+            <h1>
+                Exchange Skills.<br>
+                <span>Grow Together.</span>
+            </h1>
+
+            <p>
+                SkillSwap connects people who want to learn with
+                people who love to teach. Share your knowledge and
+                discover new skills.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="register.html" class="primary-btn">
+                    Get Started →
+                </a>
+
+                <a href="#how" class="outline-btn">
+                    Explore Skills
+                </a>
+            </div>
+<div class="stats">
+    <div>
+        <h3>10+</h3>
+        <p>Skills</p>
+    </div>
+
+    <div>
+        <h3 id="learnersCount">0</h3>
+        <p>Learners</p>
+    </div>
+
+    <div>
+        <h3 id="swapsCount">0</h3>
+        <p>Skill Swaps</p>
+    </div>
+</div>
+</div>
+        <div class="hero-card">
+
+            <div class="card-top">
+                <span>🎯</span>
+                <span class="online">● Active</span>
+            </div>
+
+            <h2>Find Your Skill</h2>
+
+            <div class="skill">
+                <span>☕ Java</span>
+                <small>Wants to learn</small>
+            </div>
+
+            <div class="skill">
+                <span>🎨 UI Design</span>
+                <small>Can teach</small>
+            </div>
+
+            <a href="#skills" class="match-btn">View Skills →</a>
+
+        </div>
+
+    </section>
+
+
+    <section class="how" id="how">
+
+        <div class="section-title">
+            <p>HOW IT WORKS</p>
+            <h2>Learn. Teach. Swap.</h2>
+        </div>
+
+        <div class="steps">
+
+            <div class="step">
+                <div class="icon">👤</div>
+                <h3>Create Profile</h3>
+                <p>Tell the community what you know and what you want to learn.</p>
+            </div>
+
+            <div class="step">
+                <div class="icon">🔍</div>
+                <h3>Find a Match</h3>
+                <p>Discover people with skills that match your learning goals.</p>
+            </div>
+
+            <div class="step">
+                <div class="icon">🤝</div>
+                <h3>Start Swapping</h3>
+                <p>Connect, exchange knowledge and grow together.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="skills" id="skills">
+
+        <div class="section-title">
+            <p>POPULAR SKILLS</p>
+            <h2>What do you want to learn?</h2>
+        </div>
+
+      <div class="skill-list">
+
+    <div class="skill-item">
+        <span class="skill-icon">☕</span>
+        <div>
+            <h3>Java</h3>
+            <p>Programming</p>
+        </div>
+    </div>
+
+    <div class="skill-item">
+        <span class="skill-icon">🐍</span>
+        <div>
+            <h3>Python</h3>
+            <p>Programming</p>
+        </div>
+    </div>
+
+    <div class="skill-item">
+        <span class="skill-icon">🌐</span>
+        <div>
+            <h3>HTML & CSS</h3>
+            <p>Web Development</p>
+        </div>
+    </div>
+
+    <div class="skill-item">
+        <span class="skill-icon">⚡</span>
+        <div>
+            <h3>JavaScript</h3>
+            <p>Web Development</p>
+        </div>
+    </div>
+
+    <div class="skill-item">
+        <span class="skill-icon">⚛️</span>
+        <div>
+            <h3>React</h3>
+            <p>Frontend Development</p>
+        </div>
+    </div>
+
+    <div class="skill-item">
+        <span class="skill-icon">🗄️</span>
+        <div>
+            <h3>SQL</h3>
+            <p>Database</p>
+        </div>
+    </div>
+
+    <div class="skill-item">
+        <span class="skill-icon">🔧</span>
+        <div>
+            <h3>Git & GitHub</h3>
+            <p>Version Control</p>
+        </div>
+    </div>
+
+    <div class="skill-item">
+        <span class="skill-icon">🧪</span>
+        <div>
+            <h3>Manual Testing</h3>
+            <p>Software Testing</p>
+        </div>
+    </div>
+
+    <div class="skill-item">
+        <span class="skill-icon">🤖</span>
+        <div>
+            <h3>Selenium</h3>
+            <p>Automation Testing</p>
+        </div>
+    </div>
+
+    <div class="skill-item">
+        <span class="skill-icon">🔌</span>
+        <div>
+            <h3>REST API</h3>
+            <p>API Development</p>
+        </div>
+    </div>
+
+    <div class="skill-item">
+        <span class="skill-icon">☁️</span>
+        <div>
+            <h3>Cloud Computing</h3>
+            <p>Cloud Technology</p>
+        </div>
+    </div>
+
+    <div class="skill-item">
+        <span class="skill-icon">📊</span>
+        <div>
+            <h3>Data Structures</h3>
+            <p>Computer Science</p>
+        </div>
+    </div>
+
+    <div class="skill-item">
+        <span class="skill-icon">🧠</span>
+        <div>
+            <h3>Machine Learning</h3>
+            <p>Artificial Intelligence</p>
+        </div>
+    </div>
+
+    <div class="skill-item">
+        <span class="skill-icon">🐧</span>
+        <div>
+            <h3>Linux</h3>
+            <p>Operating Systems</p>
+        </div>
+    </div>
+
+    <div class="skill-item">
+        <span class="skill-icon">🚀</span>
+        <div>
+            <h3>DevOps</h3>
+            <p>Development & Operations</p>
+        </div>
+    </div>
+
+</div>
+
+    </section>
+
+
+    <footer>
+        <div class="logo">Skill<span>Swap</span></div>
+        <p>Learn from others. Share what you know. 🚀</p>
+        <p>© 2026 SkillSwap</p>
+    </footer>
+
+</body>
+</html>

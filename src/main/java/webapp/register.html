@@ -1,0 +1,387 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SkillSwap | Register</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #f1efff, #eef8ff);
+            color: #292943;
+        }
+
+        .register-page {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 60px;
+            padding: 55px 8%;
+        }
+
+        /* LEFT PANEL */
+
+        .register-info {
+            padding: 25px;
+        }
+
+        .logo {
+            font-size: 31px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: #292943;
+            margin-bottom: 55px;
+        }
+
+        .logo span {
+            color: #7565ed;
+        }
+
+        .register-info h1 {
+            font-size: clamp(34px, 4vw, 54px);
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+        }
+
+        .register-info h1 span {
+            color: #7565ed;
+        }
+
+        .register-info > p {
+            max-width: 480px;
+            color: #777991;
+            font-size: 16px;
+            line-height: 1.9;
+            margin-bottom: 30px;
+        }
+
+        .register-points {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .register-points p {
+            color: #555674;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .point-icon {
+            color: #7565ed;
+            font-weight: 800;
+            margin-right: 8px;
+        }
+
+
+        .register-card {
+            width: 100%;
+            max-width: 470px;
+            margin: auto;
+            padding: 42px;
+            background: #ffffff;
+            border: 1px solid #e8e5f7;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(56, 49, 120, 0.1);
+        }
+
+        .register-icon {
+            width: 58px;
+            height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 17px;
+            background: #f0edff;
+            color: #7565ed;
+            font-size: 27px;
+            margin-bottom: 24px;
+        }
+
+        .register-card h2 {
+            font-size: 29px;
+            color: #292943;
+            margin-bottom: 8px;
+        }
+
+        .register-subtitle {
+            color: #85869b;
+            font-size: 14px;
+            margin-bottom: 28px;
+        }
+
+       
+
+        .register-card form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .register-card label {
+            color: #454560;
+            font-size: 13px;
+            font-weight: 700;
+            margin: 14px 0 8px;
+        }
+
+        .register-card input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #deddec;
+            border-radius: 10px;
+            background: #fafaff;
+            color: #30304a;
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .register-card input:focus {
+            border-color: #7565ed;
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(117, 101, 237, 0.12);
+        }
+
+        .register-card input::placeholder {
+            color: #a0a1b4;
+        }
+
+        .register-btn {
+            width: 100%;
+            padding: 14px;
+            margin-top: 25px;
+            border: none;
+            border-radius: 11px;
+            background: linear-gradient(135deg, #7565ed, #5948d8);
+            color: white;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(117, 101, 237, 0.22);
+        }
+
+        .register-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(117, 101, 237, 0.3);
+        }
+
+        .switch-text {
+            margin-top: 24px;
+            text-align: center;
+            color: #85869b;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .switch-text a {
+            color: #7565ed;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .switch-text a:hover {
+            text-decoration: underline;
+        }
+
+        .home-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #85869b;
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        .home-link:hover {
+            color: #7565ed;
+        }
+
+       
+
+        @media (max-width: 850px) {
+            .register-page {
+                grid-template-columns: 1fr;
+                padding: 35px 6%;
+                gap: 20px;
+            }
+
+            .register-info {
+                padding: 10px;
+                text-align: center;
+            }
+
+            .logo {
+                margin-bottom: 30px;
+            }
+
+            .register-info > p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .register-points {
+                display: none;
+            }
+
+            .register-card {
+                max-width: 500px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .register-card {
+                padding: 28px 22px;
+            }
+
+            .register-info h1 {
+                font-size: 36px;
+            }
+
+            .register-card h2 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="register-page">
+
+       
+
+        <section class="register-info">
+
+            <div class="logo">
+                Skill<span>Swap</span>
+            </div>
+
+            <h1>
+                Start Your Skill<br>
+                <span>Journey 🚀</span>
+            </h1>
+
+            <p>
+                Create your profile, share your knowledge,
+                and discover people who can help you learn.
+            </p>
+
+            <div class="register-points">
+
+                <p>
+                    <span class="point-icon">✓</span>
+                    Discover new skills
+                </p>
+
+                <p>
+                    <span class="point-icon">✓</span>
+                    Share what you know
+                </p>
+
+                <p>
+                    <span class="point-icon">✓</span>
+                    Connect with learners
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="register-card">
+
+            <div class="register-icon">
+                ✨
+            </div>
+
+            <h2>Create Account</h2>
+
+            <p class="register-subtitle">
+                Join the SkillSwap community today.
+            </p>
+
+            <form action="register" method="post">
+
+                <label for="name">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your full name"
+                    required>
+
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required>
+
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Create a password"
+                    required>
+
+
+                <button
+                    type="submit"
+                    class="register-btn">
+
+                    Create Account →
+
+                </button>
+
+            </form>
+
+
+            <p class="switch-text">
+
+                Already have an account?
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            </p>
+
+            <a href="index.html" class="home-link">
+                ← Back to Home
+            </a>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

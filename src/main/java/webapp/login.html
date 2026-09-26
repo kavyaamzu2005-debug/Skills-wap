@@ -1,0 +1,508 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SkillSwap | Login</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f3ff, #eef2ff);
+            color: #172554;
+        }
+
+        
+
+        .navbar {
+            height: 80px;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            box-shadow: 0 3px 18px rgba(79, 70, 229, 0.08);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #4f46e5;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: #7c3aed;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #475569;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #4f46e5;
+        }
+
+       
+
+        .page-container {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 45px 20px;
+        }
+
+        .login-wrapper {
+            width: 100%;
+            max-width: 1050px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: #ffffff;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 20px 65px rgba(79, 70, 229, 0.13);
+        }
+
+        
+
+        .info-panel {
+            padding: 65px 48px;
+            background: linear-gradient(145deg, #4f46e5, #7c3aed);
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-panel::before {
+            content: "";
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            right: -90px;
+            top: -70px;
+        }
+
+        .info-panel::after {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border: 2px solid rgba(255, 255, 255, 0.12);
+            border-radius: 50%;
+            left: -90px;
+            bottom: -70px;
+        }
+
+        .info-badge {
+            display: inline-block;
+            padding: 8px 14px;
+            background: rgba(255, 255, 255, 0.16);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            font-size: 13px;
+            margin-bottom: 32px;
+        }
+
+        .info-panel h1 {
+            font-size: 38px;
+            line-height: 1.25;
+            margin-bottom: 22px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .info-panel h1 span {
+            color: #ddd6fe;
+        }
+
+        .info-panel > p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #ede9fe;
+            margin-bottom: 35px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 15px;
+            color: #f5f3ff;
+        }
+
+        .feature-icon {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.18);
+            color: #ffffff;
+            font-size: 14px;
+        }
+
+       
+
+        .login-panel {
+            padding: 65px 48px;
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .login-icon {
+            width: 58px;
+            height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 17px;
+            background: #eef2ff;
+            color: #4f46e5;
+            font-size: 27px;
+            margin-bottom: 24px;
+        }
+
+        .login-panel h2 {
+            font-size: 31px;
+            color: #172554;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #64748b;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        
+
+        .form-group {
+            margin-bottom: 21px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 9px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #dbe3f0;
+            border-radius: 11px;
+            outline: none;
+            font-size: 14px;
+            color: #1e293b;
+            background: #f8fafc;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: #6366f1;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #94a3b8;
+        }
+
+        .login-button {
+            width: 100%;
+            border: none;
+            border-radius: 11px;
+            padding: 15px;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.22);
+        }
+
+        .login-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(79, 70, 229, 0.3);
+        }
+
+        .switch-text {
+            text-align: center;
+            color: #64748b;
+            font-size: 14px;
+            margin-top: 28px;
+            line-height: 1.8;
+        }
+
+        .switch-text a {
+            color: #4f46e5;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .switch-text a:hover {
+            text-decoration: underline;
+        }
+
+        .home-link {
+            display: block;
+            text-align: center;
+            margin-top: 17px;
+            color: #64748b;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .home-link:hover {
+            color: #4f46e5;
+        }
+
+     
+
+        @media (max-width: 800px) {
+
+            .login-wrapper {
+                grid-template-columns: 1fr;
+                max-width: 520px;
+            }
+
+            .info-panel {
+                padding: 40px 32px;
+            }
+
+            .info-panel h1 {
+                font-size: 30px;
+            }
+
+            .login-panel {
+                padding: 40px 32px;
+            }
+
+        }
+
+        @media (max-width: 500px) {
+
+            .navbar {
+                padding: 0 20px;
+                height: 70px;
+            }
+
+            .logo {
+                font-size: 23px;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .page-container {
+                padding: 25px 15px;
+            }
+
+            .info-panel,
+            .login-panel {
+                padding: 35px 25px;
+            }
+
+            .login-panel h2 {
+                font-size: 27px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Skill<span>Swap</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+        </div>
+
+    </nav>
+
+
+    
+
+    <main class="page-container">
+
+        <div class="login-wrapper">
+
+
+           
+
+            <section class="info-panel">
+
+                <div class="info-badge">
+                    ✨ Welcome to SkillSwap
+                </div>
+
+                <h1>
+                    Learn. Teach.<br>
+                    <span>Grow Together.</span>
+                </h1>
+
+                <p>
+                    Continue your learning journey and
+                    connect with people who share your
+                    interests and skills.
+                </p>
+
+                <div class="feature-list">
+
+                    <div class="feature">
+                        <span class="feature-icon">✓</span>
+                        Learn from others
+                    </div>
+
+                    <div class="feature">
+                        <span class="feature-icon">✓</span>
+                        Share your knowledge
+                    </div>
+
+                    <div class="feature">
+                        <span class="feature-icon">✓</span>
+                        Build meaningful connections
+                    </div>
+
+                </div>
+
+            </section>
+
+
+          
+
+            <section class="login-panel">
+
+                <div class="login-icon">
+                    🔐
+                </div>
+
+                <h2>Welcome Back!</h2>
+
+                <p class="subtitle">
+                    Login to your SkillSwap account
+                    and continue your journey.
+                </p>
+
+
+                <form action="login" method="post">
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            required>
+
+                    </div>
+
+
+                    <button type="submit" class="login-button">
+                        Login to SkillSwap →
+                    </button>
+
+                </form>
+
+
+                <p class="switch-text">
+
+                    Don't have an account?
+
+                    <a href="register.html">
+                        Create Account
+                    </a>
+
+                </p>
+
+
+                <a href="index.html" class="home-link">
+                    ← Back to Home
+                </a>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>
